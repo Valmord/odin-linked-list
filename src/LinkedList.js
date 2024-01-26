@@ -86,6 +86,7 @@ export default class LinkedList {
     }
     const newNode = new Node(value);
     [newNode.next, node.next] = [node.next, newNode];
+    this.size += 1;
     return newNode;
   }
 
@@ -97,6 +98,7 @@ export default class LinkedList {
     }
     const tmp = node.next;
     node.next = tmp.next;
+    this.size -= 1;
     return tmp;
   }
 
