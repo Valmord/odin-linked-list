@@ -10,6 +10,14 @@ export default class LinkedList {
     return node;
   }
 
+  get head() {
+    return this.head;
+  }
+
+  get tail() {
+    return this.tail;
+  }
+
   set tail(node) {
     this.tail = node;
     return node;
@@ -28,6 +36,56 @@ export default class LinkedList {
     if (this.size === 0) [this.head, this.tail] = [node, node];
     else [node.next, this.head] = [this.head, node];
     this.size += 1;
+  }
+
+  at(index) {
+    if (index > this.size) return "Index cannot exceed list size";
+    let node = this.head;
+    for (let i = 0; i <= index; i++) {
+      if (index === i) return node;
+      node = node.next;
+    }
+  }
+
+  find(value) {
+    let node = this.head;
+    let count = 0;
+    while (node !== null) {
+      if (node.data === value) return count;
+      node = node.next;
+      count += 1;
+    }
+    return null;
+  }
+
+  pop() {
+    let node = this.head;
+    while (node.next !== this.tail) {
+      node = node.next;
+    }
+    const tmp = this.tail;
+    [this.tail, node.next] = [node, null];
+
+    return tmp;
+  }
+
+  contains(value) {
+    let node = this.head;
+    while (node !== null) {
+      if (node.data === value) return true;
+      node = node.next;
+    }
+    return false;
+  }
+
+  toString(node = this.head) {
+    let nodeString = "";
+    while (node !== null) {
+      nodeString += `(${node.data}) → `;
+      node = node.next;
+    }
+    nodeString += "(null)";
+    return nodeString;
   }
 
   print(node = this.head) {
