@@ -15,5 +15,8 @@ console.log("contains 5:", list.contains(5));
 console.log("contains -1:", list.contains(-1));
 console.log("find index of 5:", list.find(5));
 console.log("find index of -1:", list.find(-1));
+console.log("Inserting at index 2:", list.insertAt(2, 52));
+console.log(list.toString());
+console.log("Removing at index 2:", list.removeAt(2));
 console.log(list.toString());
 list.print();

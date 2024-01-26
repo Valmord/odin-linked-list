@@ -78,6 +78,28 @@ export default class LinkedList {
     return false;
   }
 
+  insertAt(index, value) {
+    if (index > this.size) return "Invalid Index";
+    let node = this.head;
+    while (index-- > 1) {
+      node = node.next;
+    }
+    const newNode = new Node(value);
+    [newNode.next, node.next] = [node.next, newNode];
+    return newNode;
+  }
+
+  removeAt(index) {
+    if (index > this.size) return "Invalid Index";
+    let node = this.head;
+    while (index-- > 1) {
+      node = node.next;
+    }
+    const tmp = node.next;
+    node.next = tmp.next;
+    return tmp;
+  }
+
   toString(node = this.head) {
     let nodeString = "";
     while (node !== null) {
